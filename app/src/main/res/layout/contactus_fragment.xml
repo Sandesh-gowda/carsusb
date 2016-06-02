@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/contact_us_bottom_layout"
+
+        android:fitsSystemWindows="true"
+        android:overScrollMode="never"
+        android:scrollbars="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:padding="8dp">
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="200dp"
+                android:layout_height="125dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/imageView2"
+                android:background="@drawable/carnew"
+                />
+
+            <TextView
+                android:id="@+id/contact_form_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="5dp"
+                android:text="CarsUSB"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold|italic"
+                android:gravity="" />
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/contact_address"
+                android:textColor="@color/white"
+                android:gravity="top"
+                android:fitsSystemWindows="true"
+                android:breakStrategy="balanced"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+
+                android:padding="5dp" />
+            <EditText
+                android:id="@+id/contact_us_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_bg"/>
+
+            <EditText
+                android:id="@+id/contact_us_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_bg"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/contact_us_phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_bg"
+                android:hint="Phone"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/contact_us_message"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_bg"
+                android:gravity="top"
+                android:hint="Your Message"
+                android:fitsSystemWindows="true"
+                android:breakStrategy="balanced"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:padding="5dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/contact_us_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/contact_us_submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:background="@color/current_month_bg"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="@string/submit"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

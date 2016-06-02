@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="sample.com.carusb">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".main.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".main.LoginActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".main.Splashscreen"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".main.Tandc"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.Fpassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.SignUp"
+            android:screenOrientation="portrait"
+            android:theme="@style/EditText_Theme" />
+        <activity
+            android:name=".main.AboutUs"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.PrivacyPolicy"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.Otp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".car_details.MyStockDetailsActivity"
+            android:label="@string/details_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.SearchResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".custom_gallery.Gallery_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".car_details.BigImageActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".main.AdvanceSearchResult"
+            android:screenOrientation="portrait"/>
+
+
+    </application>
+
+</manifest>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fa2424</color>
+    <color name="colorPrimaryDark">#bb434c</color>
+    <color name="colorAccent">#fa2424</color>
+    <color name="bgcolor_dealer">#2f2b2b</color>
+    <color name="color_dealer">#FFFAFA</color>
+    <color name="bg_color">#6f2424</color>
+    <color name="background_grey">#EEEEEE</color>
+    <color name="dark_grey">#161616</color>
+    <color name="gun_metal">#2C3539</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="bg_dsplay">#471242</color>
+    <color name="bg_sinup">#471242</color>
+    <color name="white_transparent">#fa2424</color>
+    <color name="brown">#5c3333</color>
+
+
+    <!--tablayout bacground-->
+    <color name="white_transparent_tab">#FFFFFF</color>
+    <color name="whitea_tab">#ffffff</color>
+    <color name="black_tab">#000000</color>
+
+    <color name="colorPrimaryhome1">#125688</color>
+    <color name="colorPrimaryDarkhom2">#125688</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccenthome3">#c8e8ff</color>
+    <color name="grey">#7E7E7E</color>
+
+    <color name="Colorlandingpage">#9c7b6e</color>
+    <color name="current_month_bg">#fa2424</color>
+    <color name="current_inventory_bg">#fa2424</color>
+    <color name="current_soldstatus_bg">#FFBF00</color>
+
+</resources>

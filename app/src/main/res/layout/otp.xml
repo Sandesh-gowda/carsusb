@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:layout_width="200dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/imageView2"
+        android:background="@drawable/carnew"
+        />
+    <TextView
+        android:id="@+id/dealer_headertext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:color="@color/colorAccent"
+        android:gravity="left"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+
+        android:text="Enter OTP"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:textStyle="italic|bold"
+
+
+        />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="left|fill_vertical|center_horizontal"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:text="@string/enter_otp"
+        android:textColor="@color/white" />
+
+
+    <EditText
+        android:id="@+id/otp_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:maxLength="4"
+        android:hint="@string/Enter_recived_otp"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="#CCFFFFFF"
+        android:textSize="15sp"
+        android:theme="@style/EditText_Theme" />
+
+
+    <Button
+        android:id="@+id/otp_submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/mybutton"
+        android:onClick="submitButtonOnclick"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="@string/submit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+
+
+
+
+</LinearLayout>
+
+
+
+

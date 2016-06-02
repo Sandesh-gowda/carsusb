@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sellers_profile_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingBottom="5dp"
+    android:background="@drawable/bg"
+  >
+    <!-- Header View -->
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:paddingRight="10dp"
+        android:layout_centerVertical="true"
+        android:foregroundGravity="left"
+        android:src="@drawable/carnew" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/image_view"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill_horizontal"
+            android:text="CarsUSB"
+            android:paddingTop="1dp"
+            android:paddingBottom="3dp"
+            android:layout_marginTop="1dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/email_address"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill_horizontal"
+            android:text="Connecting Dealers"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+
+
+            android:textStyle="italic"
+
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/current_month_bg" />
+</RelativeLayout>
+

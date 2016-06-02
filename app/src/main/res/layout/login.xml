@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="200dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="25dp"
+
+        android:background="@drawable/carnew" />
+
+    <TextView
+        android:id="@+id/dealer_headertext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:color="@color/colorAccent"
+        android:gravity="left"
+
+        android:text="Sign in"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:textStyle="italic|bold"
+
+
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="13dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_call" />
+
+                <EditText
+                    android:id="@+id/dealer_mobile_number"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="@string/Mobileno"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="#CCFFFFFF"
+                    android:textSize="18sp"
+                    android:theme="@style/EditText_Theme" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_pwd" />
+
+                <EditText
+                    android:id="@+id/dealer_password"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="@string/password"
+                    android:inputType="numberPassword"
+                    android:padding="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="#CCFFFFFF"
+                    android:textSize="18sp"
+                    android:theme="@style/EditText_Theme" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/dealer_loginButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/mybutton"
+                android:onClick="dpOnClick"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
+                android:text="Log in"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <TextView
+                    android:id="@+id/dealer_forgotpwd"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="fpOnclick"
+                    android:padding="5dp"
+                    android:text="Forgot Password?"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/dealer_signup"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="45dp"
+                    android:layout_weight="1"
+                    android:onClick="suOnclick"
+                    android:padding="5dp"
+                    android:text="Sign Up"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                   />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+

@@ -1,0 +1,156 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Main Menus -->
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/home"
+            android:checkable="true"
+            android:checked="true"
+            android:icon="@drawable/ic_carusbhome"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/dashboard"
+            android:checkable="true"
+            android:checked="true"
+            android:icon="@drawable/ic_dashboard"
+            android:title="@string/dash_board" />
+        <item
+            android:id="@+id/my_profile"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/my_profile" />
+
+        <item
+            android:id="@+id/settings"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_sett"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/Reports"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_report"
+            android:title="@string/Reports" />
+        <item
+            android:id="@+id/Contact_us"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_contactus"
+            android:title="@string/contact_us" />
+
+       <!-- <item
+            android:id="@+id/shortlist"
+            android:checkable="false"
+            android:checked="false"
+            android:icon="@drawable/aboutus"
+            android:title="@string/shortlist" />
+
+
+        <item
+            android:id="@+id/sold"
+            android:checkable="false"
+            android:checked="false"
+            android:icon="@drawable/aboutus"
+            android:title="Sold Car" />-->
+
+        <item
+            android:id="@+id/logout"
+            android:checkable="false"
+            android:checked="false"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout" />
+
+        <item android:title="@string/activities">
+            <menu>
+                <group android:checkableBehavior="none">
+                    <item
+                        android:id="@+id/search_car_link"
+                        android:icon="@drawable/ic_car"
+                        android:title="@string/search_car" />
+
+
+                    <item
+                        android:id="@+id/shortlist"
+                        android:checkable="false"
+                        android:checked="false"
+                        android:icon="@drawable/aboutus"
+                        android:title="@string/shortlist" />
+
+
+                    <item
+                        android:id="@+id/sold"
+                        android:checkable="false"
+                        android:checked="false"
+                        android:icon="@drawable/aboutus"
+                        android:title="Sold Car" />
+                    <!--<item
+                        android:id="@+id/Leads"
+                        android:icon="@drawable/ic_leads"
+                        android:title="@string/LEADS" />
+                    <item
+                        android:id="@+id/Requirements"
+                        android:icon="@drawable/ic_req"
+                        android:title="@string/REQUIREMENTS" />-->
+
+                </group>
+            </menu>
+        </item>
+        <!--<item android:title="@string/options"
+            >
+            <menu>
+                <group android:checkableBehavior="none">
+                    <item
+                        android:id="@+id/AUCTION"
+                        android:icon="@drawable/ic_auction"
+                        android:title="@string/AUCTION"
+                       />
+                    <item
+                        android:id="@+id/Finance"
+                        android:icon="@drawable/ic_finance"
+                        android:title="@string/FINANCE" />
+                    <item
+                        android:id="@+id/Market"
+                        android:icon="@drawable/ic_market"
+                        android:title="@string/MARKET" />
+                    <item
+                        android:id="@+id/Loans"
+                        android:icon="@drawable/ic_loans"
+                        android:title="@string/LOANS" />
+                    <item
+                        android:id="@+id/insurance"
+                        android:icon="@drawable/ic_insurance"
+                        android:title="@string/INSURANCE" />
+                </group>
+            </menu>
+        </item>-->
+
+    </group>
+    <!--  Sub Menus  -->
+    <item android:title="@string/others">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/share_app"
+                    android:icon="@drawable/ic_share"
+                    android:title="@string/share" />
+                <item
+                    android:id="@+id/about_us"
+                    android:icon="@drawable/aboutus"
+                    android:title="@string/about_us" />
+                <item
+                    android:id="@+id/rate_app"
+                    android:icon="@drawable/ic_rate"
+                    android:title="@string/rate" />
+                <item
+                    android:id="@+id/privacy_and_policy"
+                    android:icon="@drawable/ic_help"
+                    android:title="@string/Privacy_Policy" />
+            </group>
+        </menu>
+    </item>
+
+
+</menu>
