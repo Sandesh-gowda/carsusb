@@ -943,23 +943,16 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
                         Toast.makeText(getActivity(), "Successfully added", Toast.LENGTH_SHORT).show();
                       //  changePostion();
                       // Toast.makeText(getActivity(), "waiting added", Toast.LENGTH_SHORT).show();
-                        resetAllViews();
+                      //  resetAllViews();
 
 
-                        /*sumeeth code for open window*/
-                      //  viewPager.setCurrentItem(2,true);
-                        Fragment f = new MyStockFragment();
-                        if (f != null){
 
-                            FragmentManager manager = getActivity().getSupportFragmentManager();
-                            // FragmentManager manager = getChildFragmentManager();
-                            FragmentTransaction ft = manager.beginTransaction();
-                            ft.replace(R.id.frame_container,f);
-                            ft.addToBackStack(null);
-                            ft.commit();
-                           // manager.beginTransaction().replace(R.id.frame_container, new MyStockFragment()).commit();
+                        /*  code for moving from addcar to mystock */
+                        HomeFragment fragment = (HomeFragment) getParentFragment();
+                        fragment.addCarFragment.resetAllViews();
+                        fragment.setCurrentFragment(2);
 
-                        }
+
 
 
 
