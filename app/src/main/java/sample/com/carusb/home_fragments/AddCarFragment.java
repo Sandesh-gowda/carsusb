@@ -1186,7 +1186,16 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
 
                     if (success == 1) {
 
-                        resetAllViews();
+
+
+                        /* code for moving to mystock when it is updated */
+
+                        HomeFragment fragment = (HomeFragment) getParentFragment();
+                        fragment.addCarFragment.resetAllViews();
+                        fragment.setCurrentFragment(2);
+
+
+
 
                     }
                 } catch (JSONException e) {
