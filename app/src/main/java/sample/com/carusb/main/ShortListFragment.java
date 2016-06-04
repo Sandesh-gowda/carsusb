@@ -56,7 +56,7 @@ public class ShortListFragment extends Fragment {
         MyPreferenceManager preferenceManager = new MyPreferenceManager(getActivity(), "shortlist");
         final ArrayList<Stock> shortList = preferenceManager.getShortList();
         if (shortList != null && shortList.size() > 0) {
-            final StockAdapter adapter = new StockAdapter(getActivity(), shortList, false);
+            final StockAdapter adapter = new StockAdapter(getActivity(), shortList, false,false);
             havingSomeStock();
             recyclerView.setAdapter(adapter);
 

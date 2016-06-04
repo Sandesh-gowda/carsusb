@@ -45,12 +45,15 @@ public class MyStockDetailsActivity extends AppCompatActivity implements View.On
     private TextView mobile, dealer_car_name, brand_name, car_model_name, car_varient_name, car_kms, car_fuel, car_color, car_reg_no, car_owner, car_price, car_full_summary, car_myImageViewText, car_dealer_name, car_dealer_city, car_dealer_state;
     private Button shortlist, call, share;
     private boolean isMyStock;
+    private boolean isSoldCar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         myStock_model = (Stock) getIntent().getSerializableExtra("Car_Data");
         isMyStock = getIntent().getBooleanExtra("isMyStock", false);
+        //not showing call share shortlist.
+        isSoldCar = getIntent().getBooleanExtra("isSoldCar",false);
         setContentView(R.layout.car_details_activity);
 
         setHeaderImages();
@@ -114,24 +117,47 @@ public class MyStockDetailsActivity extends AppCompatActivity implements View.On
 
         /* sumeeth  modified */
         shortlist = (Button) findViewById(R.id.car_short_listed);
+        share = (Button) findViewById(R.id.share_screen);
         /*hide the button sumeeth*/
+
+
+
         if (isMyStock) {
             shortlist.setVisibility(View.GONE);
             call.setVisibility(View.GONE);
-        } else {
+        } else if (isSoldCar) {
+            shortlist.setVisibility(View.GONE);
+            call.setVisibility(View.GONE);
+            contact_click.setVisibility(View.GONE);
+        }
+        else {
             shortlist.setVisibility(View.VISIBLE);
             call.setVisibility(View.VISIBLE);
         }
+
+
+
         call.setOnClickListener(this);
-        share = (Button) findViewById(R.id.share_screen);
         share.setOnClickListener(this);
         shortlist.setOnClickListener(this);
+
+
         if (isMyStock) {
             contact_click.setVisibility(View.GONE);
             //  buttons_link.setVisibility(View.VISIBLE);
         } else {
             contact_click.setVisibility(View.VISIBLE);
             //     buttons_link.setVisibility(View.GONE);
+        }
+
+
+        /*removing shortlist, call, share  in soldcar*/
+
+        if (isSoldCar){
+            shortlist.setVisibility(View.GONE);
+            call.setVisibility(View.GONE);
+            share.setVisibility(View.GONE);
+            contact_click.setVisibility(View.GONE);
         }
 
     }

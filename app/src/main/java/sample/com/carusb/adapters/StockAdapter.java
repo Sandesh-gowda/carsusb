@@ -42,14 +42,18 @@ public class StockAdapter extends
     private ArrayList<Stock> arrayList;
     private Context context;
     private boolean isMyStock;
+   private boolean isSoldCar;
+
 
     private OnitemClickLIstener onItemClickListener;
 
     public StockAdapter(Context context,
-                        ArrayList<Stock> arrayList, boolean isMyStock) {
+                        ArrayList<Stock> arrayList, boolean isMyStock,boolean isSoldCar) {
         this.context = context;
         this.arrayList = arrayList;
         this.isMyStock = isMyStock;
+
+        this.isSoldCar = isSoldCar;
         mInflater = LayoutInflater.from(context);
 
     }
@@ -118,6 +122,7 @@ public class StockAdapter extends
                         Intent in = new Intent(context, MyStockDetailsActivity.class);
                         in.putExtra("Car_Data", arrayList.get(position));
                         in.putExtra("isMyStock", isMyStock);
+                        in.putExtra("isSoldCar",isSoldCar);
                         context.startActivity(in);
                         break;
                 }
@@ -128,7 +133,7 @@ public class StockAdapter extends
     private void showDeleateDialog(final String id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Delete");
-        builder.setMessage("Are you sure you want to delete?");
+        builder.setMessage("Are you sure you want to delete ?");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -142,7 +147,7 @@ public class StockAdapter extends
     private void showSoldDialog(final String id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Sold");
-        builder.setMessage("Are you sure you want to sold?");
+        builder.setMessage("Are you sure Car is sold ?");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

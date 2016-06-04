@@ -23,6 +23,7 @@ import java.util.Map;
 import sample.com.carusb.adapters.StockAdapter;
 import sample.com.carusb.home_fragments.MyStockFragment;
 import sample.com.carusb.main.MyApplication;
+import sample.com.carusb.main.SoldFragment;
 import sample.com.carusb.model.Stock;
 import sample.com.carusb.model.StockList;
 
@@ -89,10 +90,16 @@ public class BaseFragment extends Fragment {
                 } else {
                     havingSomeStock();
                     boolean isMyStock = false;
-                    if (this instanceof MyStockFragment) {
+                    boolean isSoldCar = false;
+
+                    /* sold  detail acivity car removed call share shortlist  */
+
+                    if (this instanceof MyStockFragment || this instanceof SoldFragment) {
                         isMyStock = true;
+                        isSoldCar = true;
                     }
-                    adapter = new StockAdapter(getActivity(), carsList, isMyStock);
+
+                    adapter = new StockAdapter(getActivity(), carsList,isMyStock,isSoldCar);
                     recyclerView.setAdapter(adapter);
                 }
             }

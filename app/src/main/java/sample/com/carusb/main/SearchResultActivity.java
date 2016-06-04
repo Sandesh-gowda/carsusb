@@ -142,7 +142,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 noStock();
             } else {
                 havingSomeStock();
-                adapter = new StockAdapter(SearchResultActivity.this, carsList, false);
+                adapter = new StockAdapter(SearchResultActivity.this, carsList, false, false);
                 recyclerView.setAdapter(adapter);
             }
         } catch (JsonSyntaxException e) {

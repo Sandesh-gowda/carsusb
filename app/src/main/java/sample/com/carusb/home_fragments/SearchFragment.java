@@ -391,6 +391,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     private void showMakeDialog() {
         if (makeArrayList.size() > 0) {
 //            String[] makes = new String[makeArrayList.size()];
+
 //            makes = makeArrayList.toArray(makes);
             selectMake(getActivity(), selectmake, makeArrayList);
         }
