@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import sample.com.carusb.model.Stock;
@@ -81,8 +82,11 @@ public class MyPreferenceManager {
 
 
     public void setShortlistItems(ArrayList<Stock> list) {
+
+        LinkedHashSet<Stock> lhs = new LinkedHashSet<Stock>();
+        lhs.addAll(list);
         Gson gson = new Gson();
-        String jsonString = gson.toJson(list);
+        String jsonString = gson.toJson(lhs);
         editor.putString("shortlist", jsonString).apply();
     }
 

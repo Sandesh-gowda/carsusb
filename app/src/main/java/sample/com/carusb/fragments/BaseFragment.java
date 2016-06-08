@@ -23,6 +23,7 @@ import java.util.Map;
 import sample.com.carusb.adapters.StockAdapter;
 import sample.com.carusb.home_fragments.MyStockFragment;
 import sample.com.carusb.main.MyApplication;
+import sample.com.carusb.main.ShortListFragment;
 import sample.com.carusb.main.SoldFragment;
 import sample.com.carusb.model.Stock;
 import sample.com.carusb.model.StockList;
@@ -37,8 +38,11 @@ public class BaseFragment extends Fragment {
     protected TextView empty_stock;
 
     protected Gson gson = new Gson();
+
     protected StockAdapter adapter;
+
     protected String responseData;
+
     protected ArrayList<Stock> carsList;
 
 
@@ -91,15 +95,21 @@ public class BaseFragment extends Fragment {
                     havingSomeStock();
                     boolean isMyStock = false;
                     boolean isSoldCar = false;
-
+                    boolean isShortList = false;
                     /* sold  detail acivity car removed call share shortlist  */
 
-                    if (this instanceof MyStockFragment || this instanceof SoldFragment) {
+                    if (this instanceof MyStockFragment || this instanceof SoldFragment || this instanceof ShortListFragment ) {
+
                         isMyStock = true;
+
                         isSoldCar = true;
+                        isShortList =true;
                     }
 
-                    adapter = new StockAdapter(getActivity(), carsList,isMyStock,isSoldCar);
+
+
+                    adapter = new StockAdapter(getActivity(), carsList,isMyStock,isSoldCar,isShortList);
+
                     recyclerView.setAdapter(adapter);
                 }
             }
@@ -108,6 +118,9 @@ public class BaseFragment extends Fragment {
             noStock();
         }
     }
+
+
+
 
 
     protected void noStock() {

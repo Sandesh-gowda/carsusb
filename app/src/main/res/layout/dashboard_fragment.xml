@@ -74,7 +74,8 @@
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="May month"
+
+                    android:id="@+id/purchased_month_dashboard"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -213,9 +214,10 @@
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:padding="2dp"
+                    android:id="@+id/sold_month_dashboard"
                     android:background="@color/white"
                     android:textColor="@color/current_month_bg"
-                    android:text="May month"
+
 
                     android:textSize="15sp"
                     android:textStyle="bold" />

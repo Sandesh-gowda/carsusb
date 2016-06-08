@@ -15,6 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+    import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import me.relex.circleindicator.CircleIndicator;
 import sample.com.carusb.R;
@@ -45,7 +49,7 @@ public class MyStockDetailsActivity extends AppCompatActivity implements View.On
     private TextView mobile, dealer_car_name, brand_name, car_model_name, car_varient_name, car_kms, car_fuel, car_color, car_reg_no, car_owner, car_price, car_full_summary, car_myImageViewText, car_dealer_name, car_dealer_city, car_dealer_state;
     private Button shortlist, call, share;
     private boolean isMyStock;
-    private boolean isSoldCar;
+    private boolean isSoldCar,isShortList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,13 @@ public class MyStockDetailsActivity extends AppCompatActivity implements View.On
         myStock_model = (Stock) getIntent().getSerializableExtra("Car_Data");
         isMyStock = getIntent().getBooleanExtra("isMyStock", false);
         //not showing call share shortlist.
+
         isSoldCar = getIntent().getBooleanExtra("isSoldCar",false);
+
+
+       isShortList = getIntent().getBooleanExtra("isShortList",false);
+
+
         setContentView(R.layout.car_details_activity);
 
         setHeaderImages();
@@ -125,10 +135,8 @@ public class MyStockDetailsActivity extends AppCompatActivity implements View.On
         if (isMyStock) {
             shortlist.setVisibility(View.GONE);
             call.setVisibility(View.GONE);
-        } else if (isSoldCar) {
-            shortlist.setVisibility(View.GONE);
-            call.setVisibility(View.GONE);
-            contact_click.setVisibility(View.GONE);
+         //   share.setVisibility(View.VISIBLE);
+
         }
         else {
             shortlist.setVisibility(View.VISIBLE);
@@ -156,9 +164,19 @@ public class MyStockDetailsActivity extends AppCompatActivity implements View.On
         if (isSoldCar){
             shortlist.setVisibility(View.GONE);
             call.setVisibility(View.GONE);
-            share.setVisibility(View.GONE);
-            contact_click.setVisibility(View.GONE);
+
+
+        //   share.setVisibility(View.INVISIBLE);
+         //   contact_click.setVisibility(View.GONE);
+
+
         }
+
+
+
+        // removing shortlist only in shortlist ;
+
+
 
     }
 
@@ -189,6 +207,16 @@ public class MyStockDetailsActivity extends AppCompatActivity implements View.On
                     shortList = new ArrayList<>();
                 }
                 shortList.add(myStock_model);
+
+
+               /* //now convert it to linkedhashmap
+                Set<Stock> lhs = new LinkedHashSet<Stock>();
+                    lhs.addAll(shortList);
+                //and again send to arraylist
+
+                ArrayList<Stock>  shortListw = new ArrayList<Stock>(lhs);
+*/
+
                 preferenceManager.setShortlistItems(shortList);
                 Toast.makeText(MyStockDetailsActivity.this, "Short listed", Toast.LENGTH_SHORT).show();
                 break;

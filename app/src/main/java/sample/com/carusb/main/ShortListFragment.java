@@ -15,13 +15,12 @@ import java.util.ArrayList;
 
 import sample.com.carusb.R;
 import sample.com.carusb.adapters.StockAdapter;
+import sample.com.carusb.fragments.BaseFragment;
 import sample.com.carusb.model.Stock;
 import sample.com.carusb.preference_manager.MyPreferenceManager;
 
-/**
- * Created by kalyan_pvs on 14/5/16.
- */
-public class ShortListFragment extends Fragment {
+
+public class ShortListFragment extends BaseFragment {
 
     private RecyclerView recyclerView;
     private TextView empty_stock;
@@ -56,7 +55,8 @@ public class ShortListFragment extends Fragment {
         MyPreferenceManager preferenceManager = new MyPreferenceManager(getActivity(), "shortlist");
         final ArrayList<Stock> shortList = preferenceManager.getShortList();
         if (shortList != null && shortList.size() > 0) {
-            final StockAdapter adapter = new StockAdapter(getActivity(), shortList, false,false);
+//            i have modified it though another constructor .
+            final StockAdapter adapter = new StockAdapter(getActivity(), shortList, false,false,false);
             havingSomeStock();
             recyclerView.setAdapter(adapter);
 
@@ -101,14 +101,14 @@ public class ShortListFragment extends Fragment {
     }
 
 
-    private void noStock() {
+protected      void noStock() {
         empty_stock.setVisibility(View.VISIBLE);
         empty_stock.setText("Currently you don\'t have any Stock.");
         recyclerView.setVisibility(View.GONE);
 //        progressBar.setVisibility(View.GONE);
     }
 
-    private void havingSomeStock() {
+   protected   void havingSomeStock() {
         empty_stock.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
 //        progressBar.setVisibility(View.GONE);

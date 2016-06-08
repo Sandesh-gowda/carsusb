@@ -44,16 +44,19 @@ public class StockAdapter extends
     private boolean isMyStock;
    private boolean isSoldCar;
 
+    private boolean isShortlist ;
+
 
     private OnitemClickLIstener onItemClickListener;
 
     public StockAdapter(Context context,
-                        ArrayList<Stock> arrayList, boolean isMyStock,boolean isSoldCar) {
+                        ArrayList<Stock> arrayList, boolean isMyStock,boolean isSoldCar,boolean isShortlist) {
         this.context = context;
         this.arrayList = arrayList;
         this.isMyStock = isMyStock;
-
+        this.isShortlist = isShortlist;
         this.isSoldCar = isSoldCar;
+
         mInflater = LayoutInflater.from(context);
 
     }
@@ -123,6 +126,7 @@ public class StockAdapter extends
                         in.putExtra("Car_Data", arrayList.get(position));
                         in.putExtra("isMyStock", isMyStock);
                         in.putExtra("isSoldCar",isSoldCar);
+                        in.putExtra("isShortList",isShortlist);
                         context.startActivity(in);
                         break;
                 }

@@ -22,7 +22,10 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +50,7 @@ public class DashboardFragment extends Fragment {
     private ProgressDialog dialog;
     private DashboardAdapter adapter;
 
-    private TextView cmts, cits, cmts1, cits1;
+    private TextView cmts, cits, cmts1, cits1, sold_m_dash, purchased_m_dash;
     private String responseData;
     private Gson gson = new Gson();
 
@@ -65,6 +68,62 @@ public class DashboardFragment extends Fragment {
         cits = (TextView) view.findViewById(R.id.current_inventory_total_stock);
         cmts1 = (TextView) view.findViewById(R.id.current_month_total_sold);
         cits1 = (TextView) view.findViewById(R.id.current_inventory_total_sold);
+        sold_m_dash = (TextView) view.findViewById(R.id.sold_month_dashboard);
+        purchased_m_dash = (TextView) view.findViewById(R.id.purchased_month_dashboard);
+        DateFormat dateFormat = new SimpleDateFormat("MM");
+        Date date = new Date();
+        Log.d("Month",dateFormat.format(date));
+        switch (dateFormat.format(date)){
+            case "01":
+                sold_m_dash.setText("Jan");
+                purchased_m_dash.setText("Jan");
+                break;
+            case "02":
+                sold_m_dash.setText("Feb");
+                purchased_m_dash.setText("Feb");
+                break;
+            case "03":
+                sold_m_dash.setText("March");
+                purchased_m_dash.setText("March");
+                break;
+            case "04":
+                sold_m_dash.setText("April");
+                purchased_m_dash.setText("April");
+                break;
+            case "05":
+                sold_m_dash.setText("May");
+                purchased_m_dash.setText("May");
+                break;
+            case "06":
+                sold_m_dash.setText("June");
+                purchased_m_dash.setText("June");
+                break;
+            case "07":
+                sold_m_dash.setText("July");
+                purchased_m_dash.setText("July");
+                break;
+            case "08":
+                sold_m_dash.setText("August");
+                purchased_m_dash.setText("August");
+                break;
+            case "09":
+                sold_m_dash.setText("September");
+                purchased_m_dash.setText("September");
+                break;
+            case "10":
+                sold_m_dash.setText("October");
+                purchased_m_dash.setText("October");
+                break;
+            case "11":
+                sold_m_dash.setText("November");
+                purchased_m_dash.setText("November");
+                break;
+            case "12":
+                sold_m_dash.setText("December");
+                purchased_m_dash.setText("December");
+                break;
+        }
+
 
         return view;
     }

@@ -101,6 +101,10 @@ public class SearchResultActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         responseData = response;
+                        if (response.contains("{\"success\":0,\"message\":\"No Search Results\"}")){
+                            progressBar.setVisibility(View.GONE);
+                            noStock();
+                        }
                         setData(response);
                         VolleyLog.d("volley", "Error: " + response);
                     }
@@ -142,7 +146,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 noStock();
             } else {
                 havingSomeStock();
-                adapter = new StockAdapter(SearchResultActivity.this, carsList, false, false);
+                adapter = new StockAdapter(SearchResultActivity.this, carsList, false, false,false);
                 recyclerView.setAdapter(adapter);
             }
         } catch (JsonSyntaxException e) {

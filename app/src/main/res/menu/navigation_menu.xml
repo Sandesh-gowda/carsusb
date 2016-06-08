@@ -76,7 +76,7 @@
                         android:id="@+id/shortlist"
                         android:checkable="false"
                         android:checked="false"
-                        android:icon="@drawable/aboutus"
+                        android:icon="@drawable/ic_shortlist"
                         android:title="@string/shortlist" />
 
 
@@ -84,7 +84,7 @@
                         android:id="@+id/sold"
                         android:checkable="false"
                         android:checked="false"
-                        android:icon="@drawable/aboutus"
+                        android:icon="@drawable/so"
                         android:title="Sold Car" />
                     <!--<item
                         android:id="@+id/Leads"

@@ -173,7 +173,7 @@ public class AdvanceSearchResult extends AppCompatActivity {
                 noStock();
             } else {
                 havingSomeStock();
-                adapter = new StockAdapter(AdvanceSearchResult.this, carsList, false,false);
+                adapter = new StockAdapter(AdvanceSearchResult.this, carsList, false,false,false);
                 recyclerView.setAdapter(adapter);
             }
         } catch (JsonSyntaxException e) {

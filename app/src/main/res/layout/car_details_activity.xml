@@ -198,6 +198,7 @@
 
                         android:focusable="false"
                         android:text="Poornash"
+                        android:textAllCaps="true"
                         android:textColor="#ffffff"
                         android:textSize="15.0dip"
                         android:textStyle="bold" />
