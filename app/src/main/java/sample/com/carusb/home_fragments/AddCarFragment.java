@@ -86,7 +86,7 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
 
 
     private View view;
-    private EditText notes, Regno, kms, exp_date, exp_price;
+    private EditText notes, Regno, kms, exp_date, exp_price ,car_id;
 
     private Button add_new_car, submit_button;
 
@@ -152,6 +152,7 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
         insurance = (TextView) view.findViewById(R.id.add_car_insurance);
         exp_date = (EditText) view.findViewById(R.id.add_car_expirydate);
         exp_price = (EditText) view.findViewById(R.id.add_car_expected_price);
+        car_id = (EditText) view.findViewById(R.id.car_id);
 
 
         upload_insurance = (TextView) view.findViewById(R.id.upload_insurace_button);
@@ -217,6 +218,8 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
         String getInsuranceFile = insImagePath;
         String getRcBookFile = rcImagePath;
         String getCarImages = "";
+
+        String getCarID = car_id.getText().toString();
         if (listpager_Array.size() > 0)
             getCarImages = StringUtils.convertToString(listpager_Array);
         Log.e("Car Gallery : ", " - " + getCarImages + "\nInsu File - " + getInsuranceFile + "\nRC Book file - " + getRcBookFile);
@@ -245,14 +248,21 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
         } else if (getExpectedPrice.equals("")) {
             Toast.makeText(getActivity(), "ExpectedPrice field is empty", Toast.LENGTH_SHORT).show();
         } else {
-            if (MyApplication.getInstance().IsInternetConnected())
-                //       if (submit_button.getTag().toString().equals("Submit"))
-                addcar(getNotes, getRegNo, makeId, modelId, getYear, variant_id, getFuel, getColor, getKms, getTransmission, getOwners,
-                        getInsurance, getExpiryDate, getExpectedPrice, getCarImages, getInsuranceFile, getRcBookFile);
-              /*  else
-                    updateCar(getNotes, getRegNo, makeId, modelId, getYear, variant_id, getFuel, getColor, getKms, getTransmission, getOwners,
+            if (MyApplication.getInstance().IsInternetConnected()){
+
+                Log.v("Submit", submit_button.getText().toString());
+                if (submit_button.getText().toString().equals("Submit")){
+
+                    addcar(getNotes, getRegNo, makeId, modelId, getYear, variant_id, getFuel, getColor, getKms, getTransmission, getOwners,
                             getInsurance, getExpiryDate, getExpectedPrice, getCarImages, getInsuranceFile, getRcBookFile);
-*/
+
+                }
+                else
+                    updateCar(getCarID,getNotes, getRegNo, makeId, modelId, getYear, variant_id, getFuel, getColor, getKms, getTransmission, getOwners,
+                            getInsurance, getExpiryDate, getExpectedPrice, getCarImages, getInsuranceFile, getRcBookFile);
+
+
+            }
             else
                 Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();
 
@@ -1140,7 +1150,10 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
         exp_price.setText(myStock_model.getExp_price());
         kms.setText(myStock_model.getMileage());
         notes.setText(myStock_model.getNotes());
-
+        car_id.setText(myStock_model.getId());
+     // String id = myStock_model.getId();
+String carid = String.valueOf(myStock_model.getId());
+        Log.v("CARID",carid);
         try {
             int getBuyCar = Integer.parseInt(myStock_model.getIs_buy_car());
             if (getBuyCar == 1)
@@ -1170,36 +1183,39 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    public void updateCar(final String notes, final String regNo, final String makeId, final String modelId, final String getYear, final String variant_id,
+    public void updateCar(final String carid,final String notes, final String regNo, final String makeId, final String modelId, final String getYear, final String variant_id,
                           final String getFuel, final String getColor, final String getKms, final String getTransmission, final String getOwners,
                           final String getInsurance, final String getExpiryDate, final String getExpectedPrice, final String getCarImages, final String getInsuranceFile,
                           final String getRcBookFile) {
-        String url = "http://www.carsusb.com/api/addcar.php";//Put update car API Over here
+        String url = "http://www.carsusb.com/api/updatecar.php";//Put update car API Over here
         VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
                 String resultResponse = new String(response.data);
                 try {
                     JSONObject result = new JSONObject(resultResponse);
-                    int success = result.getInt("success");
-                    String message = result.getString("message");
+                    int success = result.getInt("Query was empty");
+                    String message = result.getString("Query was empty");
 
                     /*if (status.equals(Constant.REQUEST_SUCCESS)) {
                         // tell everybody you have succed upload image and post strings
                         Log.i("Messsage", message);
                     } else {
                         Log.i("Unexpected", message);
+
+
+                        final String carID,
                     }*/
 
                     if (success == 1) {
-
+                        HomeFragment fragment = (HomeFragment) getParentFragment();
+                        fragment.addCarFragment.resetAllViews();
+                        fragment.setCurrentFragment(2);
 
 
                         /* code for moving to mystock when it is updated */
 
-                        HomeFragment fragment = (HomeFragment) getParentFragment();
-                        fragment.addCarFragment.resetAllViews();
-                        fragment.setCurrentFragment(2);
+
 
 
 
@@ -1243,7 +1259,7 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
                 Log.e("Delaer Id", user.getUser_id());
                 String is_checked = "";
 
-
+                params.put("car_id",carid);
                 params.put("dealer_id", user.getUser_id());  //user id
                 params.put("add_car_notes", notes); //notes
                 params.put("add_car_reg_no", regNo);
@@ -1316,24 +1332,38 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
                     bmpIns = BitmapFactory.decodeResource(getResources(), R.drawable.a);
                     params.put("upload_insurance_file_name", new DataPart("a.jpg", AppHelper.bitmapToByteArray(bmpIns), "image/jpeg"));
                 }
+
+
+
                 try {
-                    if (!getCarImages.equals("")) {
-                        carImage = new File(getCarImages);
-                        bmpCar = BitmapFactory.decodeFile(carImage.getAbsolutePath());
-                        params.put("image_gallery", new DataPart(new File(getCarImages).getName(), AppHelper.bitmapToByteArray(bmpCar), "image/jpeg"));
-                    } else {
-                        bmpCar = BitmapFactory.decodeResource(getResources(), R.drawable.a);
-                        params.put("image_gallery", new DataPart("a.jpg", AppHelper.bitmapToByteArray(bmpCar), "image/jpeg"));
+                    for (int i = 0; i < list.size(); i++) {
+                        String path = list.get(i);
+                        if (!TextUtils.isEmpty(path)) {
+                            File file = new File(path);
+                            bmpCar = BitmapFactory.decodeFile(path);
+                            params.put("image_gallery" + i, new DataPart(file.getName(), AppHelper.bitmapToByteArray(bmpCar), "image/jpeg"));
+                        } else {
+                            bmpCar = BitmapFactory.decodeResource(getResources(), R.drawable.a);
+                            params.put("image_gallery" + i, new DataPart("a.jpg", AppHelper.bitmapToByteArray(bmpCar), "image/jpeg"));
+                        }
                     }
+//
+//
+//                    if (!getCarImages.equals("")) {
+//                        carImage = new File(getCarImages);
+//                        bmpCar = BitmapFactory.decodeFile(carImage.getAbsolutePath());
+//                        params.put("image_gallery", new DataPart(new File(getCarImages).getName(), AppHelper.bitmapToByteArray(bmpCar), "image/jpeg"));
+//                    } else {
+//                        bmpCar = BitmapFactory.decodeResource(getResources(), R.drawable.a);
+//                        params.put("image_gallery", new DataPart("a.jpg", AppHelper.bitmapToByteArray(bmpCar), "image/jpeg"));
+//                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                     bmpCar = BitmapFactory.decodeResource(getResources(), R.drawable.a);
-                    params.put("image_gallery", new DataPart("a.jpg", AppHelper.bitmapToByteArray(bmpCar), "image/jpeg"));
-
+                    params.put("image_gallery0", new DataPart("a.jpg", AppHelper.bitmapToByteArray(bmpCar), "image/jpeg"));
                 }
 
-
-                return params;
+                    return params;
             }
         };
 
