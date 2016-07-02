@@ -37,8 +37,8 @@ public class DashboardAdapter extends
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
-        // return (null != arrayList ? arrayList.size() : 0);
+        //return arrayList.size();
+         return (null != arrayList ? arrayList.size() : 0);
 
     }
 

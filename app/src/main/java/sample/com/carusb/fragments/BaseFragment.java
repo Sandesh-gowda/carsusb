@@ -29,7 +29,7 @@ import sample.com.carusb.model.Stock;
 import sample.com.carusb.model.StockList;
 
 /**
- * Created by kalyan_pvs on 14/5/16.
+ *
  */
 public class BaseFragment extends Fragment {
 

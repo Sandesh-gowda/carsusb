@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import sample.com.carusb.R;
 import sample.com.carusb.car_details.MyStockDetailsActivity;
 import sample.com.carusb.helper.RecyclerView_OnClickListener;
@@ -125,14 +126,15 @@ public class StockAdapter extends
                         Intent in = new Intent(context, MyStockDetailsActivity.class);
                         in.putExtra("Car_Data", arrayList.get(position));
                         in.putExtra("isMyStock", isMyStock);
-                        in.putExtra("isSoldCar",isSoldCar);
-                        in.putExtra("isShortList",isShortlist);
+                        in.putExtra("isSoldCar", isSoldCar);
+                        in.putExtra("isShortList", isShortlist);
                         context.startActivity(in);
                         break;
                 }
             }
         });
     }
+/*
 
     private void showDeleateDialog(final String id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -147,8 +149,69 @@ public class StockAdapter extends
         builder.setNegativeButton("Cancel", null);
         builder.show();
     }
+*/
 
-    private void showSoldDialog(final String id) {
+
+    /*delete dialog */
+    private void showDeleateDialog(final String id) {
+        /*AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Delete");
+        builder.setMessage("Are you sure you want to delete ?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                makeDeleteCall(id);
+            }
+        });
+        builder.setNegativeButton("Cancel", null);
+        builder.show();*/
+
+    SweetAlertDialog sw =  new SweetAlertDialog(context,SweetAlertDialog.WARNING_TYPE);
+        sw.setTitleText("Are you sure you want ?");
+        sw.setContentText("Delete the stock");
+        sw.setCancelText("No,cancel it !");
+        sw.setConfirmText("Yes, delete it!");
+        sw.showCancelButton(true);
+        sw.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                /*cancel text */
+                sweetAlertDialog.setTitleText("Cancelled!");
+                sweetAlertDialog.setContentText("Your Stock is safe :)");
+                sweetAlertDialog.setConfirmText("OK");
+                sweetAlertDialog.showCancelButton(false);
+                sweetAlertDialog.setCancelClickListener(null);
+                sweetAlertDialog.setConfirmClickListener(null);
+                sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+            }
+        })
+        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+
+            @Override
+            public void onClick(SweetAlertDialog sDialog) {
+                sDialog.setTitleText("Deleted!")
+                        .setContentText("Your Stock  has been deleted!")
+                        .setConfirmText("OK")
+                        .showCancelButton(false)
+                        .setCancelClickListener(null)
+                        .setConfirmClickListener(null)
+
+                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                makeDeleteCall(id);
+            }
+
+        })
+        .show();
+
+
+
+
+    }
+
+
+
+
+   /* private void showSoldDialog(final String id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Sold");
         builder.setMessage("Are you sure Car is sold ?");
@@ -160,7 +223,52 @@ public class StockAdapter extends
         });
         builder.setNegativeButton("Cancel", null);
         builder.show();
+    }*/
+
+
+
+    private void showSoldDialog(final String id) {
+
+
+        SweetAlertDialog sw =  new SweetAlertDialog(context,SweetAlertDialog.WARNING_TYPE);
+        sw.setTitleText("Are you sure ");
+        sw.setContentText("Car is sold ?");
+        sw.setCancelText("No,cancel it !");
+        sw.setConfirmText("Yes, sold it!");
+        sw.showCancelButton(true);
+        sw.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                /*cancel text */
+                sweetAlertDialog.setTitleText("Cancelled!");
+                sweetAlertDialog.setContentText("Your Car is safe :)");
+                sweetAlertDialog.setConfirmText("OK");
+                sweetAlertDialog.showCancelButton(false);
+                sweetAlertDialog.setCancelClickListener(null);
+                sweetAlertDialog.setConfirmClickListener(null);
+                sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+            }
+        })
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.setTitleText("Sold!")
+                                .setContentText("Your Car is sold")
+                                .setConfirmText("OK")
+                                .showCancelButton(false)
+                                .setCancelClickListener(null)
+                                .setConfirmClickListener(null)
+
+                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        makeSoldCall(id);
+                    }
+
+                })
+                .show();
+
     }
+
 
 
     private void makeDeleteCall(final String id) {

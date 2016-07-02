@@ -48,6 +48,8 @@ import com.android.volley.Response;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -490,6 +492,7 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
 
     private void setviewPager(final String selectedImagePath, final Context context) {
         try {
+
             if (list.size() >= 4) {
                 image_Gallery.setVisibility(View.GONE);
             } else {
@@ -941,13 +944,16 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
 
                     if (success == 1) {
                         Toast.makeText(getActivity(), "Successfully added", Toast.LENGTH_SHORT).show();
+
+                      //  lt.setText("Successfully added");
+
                       //  changePostion();
                       // Toast.makeText(getActivity(), "waiting added", Toast.LENGTH_SHORT).show();
                       //  resetAllViews();
 
 
 
-                        /*  code for moving from addcar to mystock */
+                         /* code for moving from addcar to mystock */
                         HomeFragment fragment = (HomeFragment) getParentFragment();
                         fragment.addCarFragment.resetAllViews();
                         fragment.setCurrentFragment(2);
@@ -1006,7 +1012,7 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
 
 
                 params.put("dealer_id", user.getUser_id());  //user id
-                params.put("add_car_notes", notes); //notes
+                params.put("add_car_notes", notes.toUpperCase()); //notes
                 params.put("add_car_reg_no", regNo);
                 params.put("add_car_make", makeId);
                 params.put("add_car_model", modelId);
@@ -1014,11 +1020,11 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
                 params.put("add_car_year", getYear);
                 params.put("add_car_variant", variant_id);
                 params.put("add_car_fuel", getFuel);
-                params.put("add_car_color", getColor);
+                params.put("add_car_color", getColor.toUpperCase());
                 params.put("add_car_kms", getKms);
-                params.put("add_car_transmission", getTransmission);
+                params.put("add_car_transmission", getTransmission.toUpperCase());
                 params.put("add_car_owners", getOwners);
-                params.put("add_car_insurance", getInsurance);
+                params.put("add_car_insurance", getInsurance.toUpperCase());
                 params.put("add_car_expirydate", getExpiryDate);
                 params.put("add_car_expiryprice", getExpectedPrice);
 
@@ -1077,6 +1083,7 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
                     bmpIns = BitmapFactory.decodeResource(getResources(), R.drawable.a);
                     params.put("upload_insurance_file_name", new DataPart("a.jpg", AppHelper.bitmapToByteArray(bmpIns), "image/jpeg"));
                 }
+
                 try {
                     for (int i = 0; i < list.size(); i++) {
                         String path = list.get(i);
